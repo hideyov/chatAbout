@@ -20,7 +20,7 @@ class UsersController extends Controller
 	public function show($id)
 	{
 		$user = User::find($id);
-		$chats = $user->chats()->orderBy('created_at', 'desc')->paginate(5);
+		$chats = $user->chats()->orderBy('created_at', 'desc')->paginate(4);
 		
 		$data = [
 			'user' => $user,
