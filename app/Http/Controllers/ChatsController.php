@@ -11,7 +11,7 @@ class ChatsController extends Controller
 			$data = [];
 			if (\Auth::check()) {
 				$user = \Auth::user();
-				$chats = $user->chats()->orderBy('created_at', 'desc')->paginate(5);
+				$chats = $user->feed_chats()->orderBy('created_at', 'desc')->paginate(5);
 				
 				$data = [
 					'user' => $user,
