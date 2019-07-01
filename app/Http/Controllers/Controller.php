@@ -15,11 +15,13 @@ class Controller extends BaseController
 			$count_chats = $user->chats()->count();
 			$count_followings = $user->followings()->count();
 			$count_followers = $user->followers()->count();
+			$count_favorites = $user->favorites()->count();
 			
 			return [
 				'count_chats' => $count_chats,
 				'count_followings' => $count_followings,
 				'count_followers' => $count_followers,
+				'count_favorites' => $count_favorites,
 			];
 		}
 }
