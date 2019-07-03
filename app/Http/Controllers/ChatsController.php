@@ -33,6 +33,19 @@ class ChatsController extends Controller
 			
 			return back();
 		}
+		
+		public function update(Request $request)
+		{
+			$this->validate($request, [
+				'content' => 'required|max:191', // required は不要？
+			]);
+			
+			$request->user()->chats()->edit([
+				'content' => $request->content,
+			]);
+			
+			return back();
+		}
 	
 		public function destroy($id)
 		{

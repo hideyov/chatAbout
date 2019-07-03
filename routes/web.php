@@ -32,6 +32,9 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('followings', 'UsersController@followings')->name('users.followings');
 		Route::get('followers', 'UsersController@followers')->name('users.followers');
 		Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
+		
+    	Route::get('edit', 'UsersController@showProfileEditForm')->name('profile.edit'); // 追記
+    	Route::put('profile', 'UsersController@update')->name('profile.put'); // 追記
 	});
 
 	Route::group(['prefix' => 'chats/{id}'], function() {

@@ -75,5 +75,24 @@ class UsersController extends Controller
         $data += $this->counts($user);
     
         return view('users.favorites', $data);
-    } 
+    }
+    
+    public function showProfileEditForm($id)
+    {
+		$user = User::find($id);
+		return view('users.edit', ['user' => $user, 'id' => $id]);
+    }
+    
+    public function update(Request $request)
+    {
+      $this->validate($request, [
+        'content' => 'max:191', // required は不要？
+      ]);
+      
+      $request->user()->profile->edit([
+        'content' => $request->content,
+      ]);
+      
+      return back();
+    }
 }
