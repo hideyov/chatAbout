@@ -92,7 +92,7 @@ class UsersController extends Controller
       $request->user()->profile->edit([
         'content' => $request->content,
       ]);
-      
+
       return back();
     }
 }
