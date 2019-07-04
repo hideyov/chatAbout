@@ -76,20 +76,27 @@ class UsersController extends Controller
     
         return view('users.favorites', $data);
     }
-    
-    public function showProfileEditForm($id)
+
+    public function store(Request $request)
     {
-		$user = User::find($id);
-		return view('users.edit', ['user' => $user, 'id' => $id]);
+      $this->validate($request, [
+        'content' => 'max:191', // required は不要？
+      ]);
+      
+      $request->user()->profile->post([
+        'content' => $request->content,
+      ]);
+
+      return back();
     }
-    
+
     public function update(Request $request)
     {
       $this->validate($request, [
         'content' => 'max:191', // required は不要？
       ]);
       
-      $request->user()->profile->edit([
+      $request->user()->profile->put([
         'content' => $request->content,
       ]);
 

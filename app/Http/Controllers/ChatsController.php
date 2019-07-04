@@ -34,18 +34,32 @@ class ChatsController extends Controller
 			return back();
 		}
 		
-		public function update(Request $request)
-		{
-			$this->validate($request, [
-				'content' => 'required|max:191', // required は不要？
-			]);
-			
-			$request->user()->chats()->edit([
-				'content' => $request->content,
-			]);
-			
-			return back();
+		public function edit($id) {
+
+			return view('chats.edit', ['id' => $id]);			
 		}
+		
+        public function update(Request $request, $id)
+        {
+            //$this->validate($request, [
+            //    'content' => 'required|max:191', // required は不要？
+            // ]);
+
+			//dd(\App\Chat::find($id));
+			//dd($id);
+		
+    		$chat = \App\Chat::find($id);
+    		$chat->content = $request->content;
+    		$chat->save();
+
+    		return redirect('/');
+
+        //    $request->user()->edit([
+        //        'content' => $request->content,
+        //    ]);
+            
+            //return back();
+        }
 	
 		public function destroy($id)
 		{

@@ -1,12 +1,12 @@
 @extends('layouts.app')
-
+	
 @section('content')
 	@if (Auth::check())
 		<div class="row">
-			<aside class="col-sm-4">
+			<aside class="col-sm-3">
 				@include('users.card', ['user' => Auth::user()])
 			</aside>
-			<div class="col-sm-8">
+			<div class="col-sm-9">
 				@if (Auth::id() == $user->id)
 					{!! Form::open(['route' => 'chats.store']) !!}
 						<div class="form-group">

@@ -23,7 +23,12 @@
             {!! Form::open(['route' => ['chats.destroy', $chat->id], 'method' => 'delete']) !!}
               {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
             {!! Form::close() !!}
+
+            {!! Form::open(['route' => ['chats.edit', $chat->id], 'method' => 'get']) !!}
+              {!! Form::submit('Edit', ['class' => 'btn btn-warning btn-sm']) !!}
+            {!! Form::close() !!}
           @endif
+
         </div>
       </div>
     </li>

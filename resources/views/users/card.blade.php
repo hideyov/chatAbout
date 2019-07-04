@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-2">
 	<div class="card-header">
 		<h3 class="card-title">{{ $user->name }}</h3>
 	</div>
@@ -6,8 +6,8 @@
 		<img class="rounded img-fluid" src="{{ Gravatar::src($user->email, 500) }}" alt="">
 	</div>
 
-	<div>
-		@include('users.edit', ['user' => $user])	
-	</div>
 </div>
+
 @include('user_follow.follow_button', ['user' => $user])
+
+@include('users.profile', ['user' => $user])
