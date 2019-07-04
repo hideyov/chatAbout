@@ -8,7 +8,7 @@
 </div> <!-- .card -->
 
 @if ($user->profile == '')
-{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'post']) !!}
+{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'get']) !!}
 <div class="form-group">
 	<!--
 	{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
@@ -19,7 +19,7 @@
 
 @else
 
-{!! Form::open(['route' => ['profile.put', $user->id], 'method' => 'put']) !!}
+{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'get']) !!}
 <div class="form-group">
 	<!--
 	{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}

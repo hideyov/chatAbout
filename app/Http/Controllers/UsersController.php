@@ -90,16 +90,25 @@ class UsersController extends Controller
       return back();
     }
 
-    public function update(Request $request)
-    {
-      $this->validate($request, [
-        'content' => 'max:191', // required は不要？
-      ]);
-      
-      $request->user()->profile->put([
-        'content' => $request->content,
-      ]);
+	public function edit($id) 
+	{
 
-      return back();
-    }
+		return view('users.edit', ['id' => $id]);			
+	}
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'content' => 'max:191', // required は不要？
+        ]);
+
+		//dd(\App\User::find($id)->profile);
+		//dd($id);
+		
+    	$user = \App\User::find($id);
+    	$user->profile = $request->content;
+    	$user->save();
+
+    	return redirect('/');
+    }		
 }

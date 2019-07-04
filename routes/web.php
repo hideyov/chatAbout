@@ -33,10 +33,9 @@ Route::group(['middleware' => ['auth']], function() {
 		Route::get('followers', 'UsersController@followers')->name('users.followers');
 		Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
 		
-		Route::get('profile', 'UsersController@showProfileCreateForm')->name('profile.create');
-    	Route::post('profile', 'UsersController@store')->name('profile.post'); // 追記
-    	Route::get('profile', 'UsersController@showProfileEditForm')->name('profile.edit');
-    	Route::put('profile', 'UsersController@update')->name('profile.put'); // 追記
+		Route::get('edit', 'UsersController@edit')->name('profile.edit');
+    	Route::post('profile', 'UsersController@store')->name('profile.store'); // 追記
+    	Route::put('profile', 'UsersController@update')->name('profile.update'); // 追記
 	});
 
     Route::group(['prefix' => 'chats/{id}'], function() {
