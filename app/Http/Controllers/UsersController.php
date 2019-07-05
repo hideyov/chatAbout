@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
 	public function index() 
 	{
-		$users = User::orderBy('id', 'desc')->paginate(5);
+		$users = User::orderBy('id', 'desc')->paginate(10);
 		
 		return view('users.index', [
 			'users' => $users,
@@ -20,7 +20,7 @@ class UsersController extends Controller
 	public function show($id)
 	{
 		$user = User::find($id);
-		$chats = $user->chats()->orderBy('created_at', 'desc')->paginate(4);
+		$chats = $user->chats()->orderBy('created_at', 'desc')->paginate(10);
 		
 		$data = [
 			'user' => $user,
@@ -35,7 +35,7 @@ class UsersController extends Controller
 	public function followings($id)
 	{
 		$user = User::find($id);
-		$followings = $user->followings()->paginate(5);
+		$followings = $user->followings()->paginate(10);
 		
 		$data = [
 			'user' => $user,
