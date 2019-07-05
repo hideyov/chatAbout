@@ -11,7 +11,7 @@
 			{!! Form::open(['route' => 'login.post']) !!}
 				<div class="form-group">
 					{!! Form::label('email', 'Email') !!}
-					{!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
+					{!! Form::email('email', old('email'), ['class' => 'form-control', 'autofocus' => 'autofocus']) !!}
 				</div>
 			
 				<div class="form-group">

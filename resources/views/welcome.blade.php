@@ -3,15 +3,15 @@
 @section('content')
 	@if (Auth::check())
 		<div class="row">
-			<aside class="col-sm-3">
+			<aside class="col-sm-4 col-md-3">
 				@include('users.card', ['user' => Auth::user()])
 			</aside>
-			<div class="col-sm-9">
+			<div class="col-sm-8 col-md-9">
 				@if (Auth::id() == $user->id)
 					{!! Form::open(['route' => 'chats.store']) !!}
-						<div class="form-group">
-							{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-							{!! Form::submit('Post', ['class' => 'btn btn-success btn-block']) !!}
+						<div class="form-group d-flex flex-row">
+							{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2', 'autofocus' => 'autofocus']) !!}
+							{!! Form::submit('Post', ['class' => 'btn btn-success btn-lg py-1 px-5 mt-4 ml-1']) !!}
 						</div>
 					{!! Form::close() !!}
 				@endif

@@ -35,7 +35,6 @@ class ChatsController extends Controller
 		}
 		
 		public function edit($id) {
-
 			return view('chats.edit', ['id' => $id]);			
 		}
 		

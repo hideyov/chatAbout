@@ -1,31 +1,24 @@
-<div class="card mt-3">
-	<div class="card-header">
-		<h4>profile</h3>
+<div class="profile mt-3">
+	<h5 class="text-primary pl-2 py-1">user profile</h5>
+	<div class="profile-content mb-0 px-2 py-1">
+		<p>{!! nl2br(e($user->profile)) !!}</p>
 	</div>
-	<div class="card-body">
-		<p class="mb-0">{!! nl2br(e($user->profile)) !!}</p>
+</div> 
+
+@if (Auth::id() == $user->id)
+	@if ($user->profile == '')
+	{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'get']) !!}
+	<div class="form-group d-flex flex-row-reverse">
+		{!! Form::submit('Post Profile', ['class' => 'btn btn-success py-1 px-4 mt-1']) !!}
 	</div>
-</div> <!-- .card -->
+	{!! Form::close() !!}
 
-@if ($user->profile == '')
-{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'get']) !!}
-<div class="form-group">
-	<!--
-	{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-	-->
-	{!! Form::submit('Post Profile', ['class' => 'btn btn-primary btn-block']) !!}
-</div>
-{!! Form::close() !!}
+	@else
 
-@else
-
-{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'get']) !!}
-<div class="form-group">
-	<!--
-	{!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-	-->
-	{!! Form::submit('Edit Profile', ['class' => 'btn btn-success btn-block']) !!}
-</div>
-{!! Form::close() !!}
+	{!! Form::open(['route' => ['profile.edit', $user->id], 'method' => 'get']) !!}
+	<div class="form-group d-flex flex-row-reverse">
+		{!! Form::submit('Edit Profile', ['class' => 'btn btn-success py-1 px-4 mt-1']) !!}
+	</div>
+	{!! Form::close() !!}
+	@endif
 @endif
-
