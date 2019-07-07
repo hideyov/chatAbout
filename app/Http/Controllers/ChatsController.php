@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+			
 class ChatsController extends Controller
 {
     public function index()
@@ -35,7 +35,12 @@ class ChatsController extends Controller
 		}
 		
 		public function edit($id) {
-			return view('chats.edit', ['id' => $id]);			
+			$chat = \App\Chat::find($id);
+			$data = [
+				'chat' => $chat,
+				'id' => $id,
+				];
+			return view('chats.edit', $data);			
 		}
 		
         public function update(Request $request, $id)

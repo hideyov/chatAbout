@@ -22,3 +22,13 @@
 	{!! Form::close() !!}
 	@endif
 @endif
+
+{!! Form::open(['route' => ['users.index'], 'method' => 'get']) !!}
+<div class="form-group d-flex flex-row">
+	{!! Form::submit('Other Users', ['class' => 'btn btn-sm btn-info py-1 px-4 mt-2']) !!}
+</div>
+{!! Form::close() !!}	
+
+<!--	
+<button class="btn btn-sm btn-warning">{!! link_to_route('users.show', 'My profile', ['id' => Auth::id(), 'class' => 'btn nav-link']) !!}</buttoni>
+-->
